@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= requestType %> Test</title>
+</head>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+<body>
+    <h1>Request type : <%= requestType %></h1>
+
+    <h1>Request Header</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < requestHeader.length; i++) {%>
+            <tr>
+                <td>
+                    <%= requestHeader[i].key %>
+                </td>
+                <td>
+                    <%= requestHeader[i].value %>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <% if (locals.queryParam && locals.queryParam.length > 0) { %>
+        <h1>Query Params</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < queryParam.length; i++) {%>
+                <tr>
+                    <td>
+                        <%= queryParam[i].key %>
+                    </td>
+                    <td>
+                        <%= queryParam[i].value %>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    <% } %>
+
+    <% if (locals.formData && locals.formData.length > 0) { %>
+        <h1>Form Data</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < formData.length; i++) {%>
+                <tr>
+                    <td>
+                        <%= formData[i].key %>
+                    </td>
+                    <td>
+                        <%= formData[i].value %>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    <% } %>
+</body>
+</html>
